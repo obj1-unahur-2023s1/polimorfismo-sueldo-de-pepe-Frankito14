@@ -1,7 +1,7 @@
 import bonos.*
 import categorias.*
 
-object pepe{
+object sofia{
 	var cargo = desempleado
 	var faltas = 0
 	var bonoResultados = bonoNulo
@@ -10,8 +10,8 @@ object pepe{
 	method setCargo(nuevoCargo){cargo = nuevoCargo}
 	method getCargo() = cargo
 	
-	method getSueldoNeto() = cargo.sueldoNeto()
-	method sueldoTotal() = self.getSueldoNeto() + self.getBonoResultados() + self.getBonoPresentismo()
+	method getSueldoNeto() = cargo.sueldoNeto()*1.3
+	method sueldoTotal() = self.getSueldoNeto() + self.getBonoResultados()
 	
 	method getFaltas() = faltas
 	method setFaltas(cantidadFaltas){faltas = cantidadFaltas}

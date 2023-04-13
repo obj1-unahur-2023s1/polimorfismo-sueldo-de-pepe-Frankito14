@@ -1,0 +1,46 @@
+import bonos.*
+import categorias.*
+import pepe.*
+
+test "Bono porcentaje en todos los cargos"{
+	pepe.setCargo(gerente)
+	pepe.darBonoResultados(bonoPorcentaje)
+	assert.equals(pepe.sueldoTotal(), 11000)
+	pepe.setCargo(cadete)
+	assert.equals(pepe.sueldoTotal(), 16500)
+}
+
+test "Bono fijo en todos los cargos"{
+	pepe.setCargo(gerente)
+	pepe.darBonoResultados(bonoFijo)
+	assert.equals(pepe.sueldoTotal(), 10080)
+	pepe.setCargo(cadete)
+	assert.equals(pepe.sueldoTotal(), 15080)
+}
+
+test "Bono faltas en todos los cargos con 0 falta"{
+	pepe.setFaltas(0)
+	pepe.setCargo(gerente)
+	pepe.darBonoPresentismo(bonoPresentismo)
+	assert.equals(pepe.sueldoTotal(), 10100)
+	pepe.setCargo(cadete)
+	assert.equals(pepe.sueldoTotal(), 15100)
+}
+
+test "Bono faltas en todos los cargos con 1 falta"{
+	pepe.setFaltas(1)
+	pepe.setCargo(gerente)
+	pepe.darBonoPresentismo(bonoPresentismo)
+	assert.equals(pepe.sueldoTotal(), 10050)
+	pepe.setCargo(cadete)
+	assert.equals(pepe.sueldoTotal(), 15050)
+}
+
+test "Bono faltas en todos los cargos con mas de 1 falta"{
+	pepe.setFaltas(10)
+	pepe.setCargo(gerente)
+	pepe.darBonoPresentismo(bonoPresentismo)
+	assert.equals(pepe.sueldoTotal(), 10000)
+	pepe.setCargo(cadete)
+	assert.equals(pepe.sueldoTotal(), 15000)
+}
